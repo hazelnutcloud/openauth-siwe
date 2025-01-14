@@ -7,6 +7,7 @@
     "src",
     "dist"
   ],
+  "homepage": "https://github.com/hazelnutcloud/openauth-siwe",
   "scripts": {
     "build": "bun run script/build.ts",
     "publish": "bun run build && changeset publish"
