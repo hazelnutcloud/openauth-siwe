@@ -36,7 +36,6 @@ const app = issuer({
     siwe: SiweProvider(
       SiweUi({
         client,
-        chainId: 1,
         statement: "Sign in to My dApp",
         walletConnectProjectId: "your-project-id", // Optional
       })
