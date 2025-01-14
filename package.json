@@ -1,6 +1,6 @@
 {
-  "name": "openauth-siwe",
-  "version": "0.1.0",
+  "name": "@hazelnutcloud/openauth-siwe",
+  "version": "0.1.1",
   "module": "src/index.ts",
   "type": "module",
   "files": [
