@@ -1,6 +1,6 @@
 {
   "name": "@hazelnutcloud/openauth-siwe",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "module": "src/index.ts",
   "type": "module",
   "files": [
@@ -10,7 +10,7 @@
   "homepage": "https://github.com/hazelnutcloud/openauth-siwe",
   "scripts": {
     "build": "bun run script/build.ts",
-    "publish": "bun run build && changeset publish"
+    "release": "bun run build && changeset publish"
   },
   "exports": {
     ".": {

@@ -8,8 +8,6 @@ import { getTheme } from "@openauthjs/openauth/ui/theme";
  * Configuration options for the SIWE UI component
  */
 export interface SiweUiOptions {
-  /** Chain ID of the target Ethereum network */
-  chainId: number;
   /** Viem public client instance */
   client: PublicClient;
   /** Optional statement to display in the SIWE message */
@@ -29,15 +27,14 @@ export interface SiweUiOptions {
  * import { createPublicClient, http } from 'viem'
  * import { mainnet } from 'viem/chains'
  * import { SiweUi } from '@openauthjs/openauth-siwe'
- * 
+ *
  * const client = createPublicClient({
  *   chain: mainnet,
  *   transport: http()
  * })
- * 
+ *
  * const provider = SiweProvider(SiweUi({
  *   client,
- *   chainId: 1,
  *   statement: "Sign in to My dApp",
  *   walletConnectProjectId: "your-project-id"
  * }))
@@ -45,7 +42,6 @@ export interface SiweUiOptions {
  */
 export function SiweUi({
   client,
-  chainId,
   statement,
   resources,
   walletConnectProjectId,
@@ -55,6 +51,7 @@ export function SiweUi({
     async signin(request, nonce) {
       const theme = getTheme();
       const url = new URL(request.url);
+      const chainId = await client.getChainId();
       const jsx = (
         <Layout>
           <div
