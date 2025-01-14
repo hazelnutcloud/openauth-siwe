@@ -1,4 +1,4 @@
-# @openauthjs/openauth-siwe
+# @hazelnutcloud/openauth-siwe
 
 Sign-In with Ethereum (SIWE) provider for OpenAuth.
 
