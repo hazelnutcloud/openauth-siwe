@@ -50,7 +50,9 @@ export function SiweUi({
     client,
     async signin(request, nonce) {
       const theme = getTheme();
-      const url = new URL(request.url);
+      const _url = new URL(request.url);
+      const host = request.headers.get("x-forwarded-host") || _url.host;
+      const url = new URL(_url.pathname, `${_url.protocol}//${host}`);
       const chainId = await client.getChainId();
       const jsx = (
         <Layout>
@@ -156,13 +158,7 @@ export function SiweUi({
 
                     const signature = await signMessage(config, { message, account, connector })
 
-                    await fetch("${url.href}", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify({ signature, message }),
-                    })
+                    window.location.href = "${new URL("./verify", url).href}?message=" + encodeURIComponent(message) + "&signature=" + encodeURIComponent(signature)
                   })
 
                   list.appendChild(button)
